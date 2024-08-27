@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %} Index Page {% endblock %}
+
+{% block content%} 
+<h1> This is the index page </h2>
+
+<ol>
+    {% for person in people %}
+    <li> {{person}} <a href="{{ url_for('delete', pid=person.pid) }}">Delete</a> <a href="{{url_for('details', pid=person.pid)}}">Details</a></li>
+    {% endfor %}
+</ol>
+
+
+
+<h2>New User Registration </h2>
+<form action="{{url_for('index')}}" method="POST">
+    <input type="text" name="name" placeholder="Name" required="required"><br>
+    <input type="number" name="age" placeholder="Age"><br>
+    <input type="text" name="job" placeholder="Job"><br>
+    <input type="submit" value="Add new user">
+</form>
+
+
+
+
+
+{% endblock %}
